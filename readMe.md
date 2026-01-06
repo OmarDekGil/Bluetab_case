@@ -45,7 +45,6 @@ La variable objetivo es el nivel de engagement (`Low`, `Medium`, `High`).
 - Comparación de configuraciones:
   - Modelos entrenados únicamente con variables originales
   - Modelos con variable adicional de clustering
-  - Modelos con reducción de dimensionalidad mediante PCA
 
 ---
 
