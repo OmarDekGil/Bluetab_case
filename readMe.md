@@ -1,174 +1,84 @@
-# 🎮 Predicción del Engagement en Juegos Online mediante Machine Learning
+# Evaluación de Modelos de Machine Learning para Engagement en Juegos Online
 
-## 📌 Descripción del Proyecto
+## Descripción del Proyecto
 
-Este proyecto tiene como objetivo desarrollar un **modelo de machine learning** capaz de predecir el **nivel de engagement (compromiso)** de los jugadores de un videojuego online a partir de sus patrones de comportamiento y características demográficas. Además, se analiza **qué variables influyen más** en el engagement, proporcionando información útil para estrategias de retención, diseño de juego y personalización.
+Este proyecto analiza el rendimiento de distintos modelos de machine learning en la predicción del nivel de engagement de jugadores de un videojuego online (`Low`, `Medium`, `High`).
 
-El dataset utilizado está completamente limpio y estructurado, lo que permite centrarse directamente en el análisis y el modelado. Es un proyecto ideal tanto para **aprendizaje**, como para **portfolio profesional** o **preparación de entrevistas técnicas**.
+El objetivo principal no es únicamente entrenar un modelo predictivo, sino comparar métricas entre diferentes enfoques y estudiar cómo influye la incorporación de nuevas variables derivadas, como clustering de comportamiento o reducción de dimensionalidad mediante PCA, en el rendimiento de los modelos.
 
----
-
-## 🎯 Objetivos
-
-* Predecir el **nivel de engagement del jugador** (`Low`, `Medium`, `High`) mediante aprendizaje supervisado
-* Identificar los **factores clave** que influyen en el engagement
-* Comparar distintos modelos de machine learning
-* (Opcional) Segmentar a los jugadores según su comportamiento
+El proyecto sigue un enfoque experimental y comparativo, similar al utilizado en entornos reales de data science.
 
 ---
 
-## 🧠 Tipo de Problema
+## Objetivos
 
-* **Aprendizaje supervisado**
-* **Clasificación multiclase**
-
----
-
-## 📂 Descripción del Dataset
-
-* **Archivo:** `online_gaming_behavior_insights.csv`
-* **Registros:** 40.034 jugadores
-* **Variables:** 13
-* **Tipos de datos:** Numéricos y categóricos
-* **Valores nulos:** No existen
-
-### Grupos de Variables
-
-**Datos demográficos**
-
-* Edad
-* Género
-* Localización
-
-**Comportamiento de juego**
-
-* Tiempo total de juego
-* Frecuencia de sesiones
-* Duración media de las sesiones
-
-**Progresión del jugador**
-
-* Nivel del jugador
-* Logros desbloqueados
-
-**Variable objetivo**
-
-* Nivel de engagement (`Low`, `Medium`, `High`)
+- Comparar distintos modelos de clasificación multiclase y evaluar cuál obtiene mejores métricas
+- Analizar el impacto de añadir variables derivadas (clustering y PCA) al conjunto de datos original
+- Evaluar si estas nuevas variables aportan información relevante o introducen ruido
+- Utilizar métricas adecuadas para problemas de clasificación multiclase
 
 ---
 
-## 🛠️ Herramientas y Tecnologías
+## Tipo de Problema
 
-* Python
-* Pandas y NumPy
-* Matplotlib y Seaborn
-* Scikit-learn
-* SHAP (interpretabilidad de modelos)
-* Jupyter Notebook
+- Aprendizaje supervisado  
+- Clasificación multiclase
 
 ---
 
-## 🔄 Pipeline de Machine Learning
+## Dataset
 
-### 1️⃣ Análisis Exploratorio de Datos (EDA)
+- Archivo: `online_gaming_behavior_insights.csv`
+- Registros: 40.034 jugadores
+- Variables: 13 variables originales (numéricas y categóricas)
+- Valores nulos: no existen
 
-* Distribución de los niveles de engagement
-* Análisis de correlaciones
-* Comparación de métricas por nivel de engagement
-* Identificación de patrones y outliers
-
-### 2️⃣ Preprocesado de Datos
-
-* Codificación de variables categóricas (One-Hot Encoding)
-* Escalado de variables numéricas (StandardScaler)
-* División Train / Test (80% / 20%)
-* Uso de Pipeline y ColumnTransformer
-
-### 3️⃣ Modelos Entrenados
-
-* Regresión Logística (baseline)
-* Random Forest Classifier
-* Gradient Boosting / XGBoost (opcional)
-
-### 4️⃣ Métricas de Evaluación
-
-* Accuracy
-* F1-score (macro)
-* Matriz de confusión
-* ROC-AUC multiclase (opcional)
+El conjunto de datos incluye información demográfica, comportamiento de juego y progresión del jugador.  
+La variable objetivo es el nivel de engagement (`Low`, `Medium`, `High`).
 
 ---
 
-## 🔍 Importancia de Variables e Interpretabilidad
+## Modelos Evaluados
 
-* Importancia de variables en Random Forest
-* Coeficientes en Regresión Logística
-* Valores SHAP para interpretación global y local
-
-Preguntas clave que responde el proyecto:
-
-* ¿Qué comportamientos influyen más en el engagement?
-* ¿Es más importante jugar más tiempo o jugar con mayor frecuencia?
-* ¿Las variables demográficas tienen impacto real?
+- Regresión Logística (modelo baseline)
+- Árboles de Decisión
+- Comparación de configuraciones:
+  - Modelos entrenados únicamente con variables originales
+  - Modelos con variable adicional de clustering
+  - Modelos con reducción de dimensionalidad mediante PCA
 
 ---
 
-## 📊 (Opcional) Segmentación de Jugadores
+## Pipeline de Trabajo
 
-* Clustering con K-Means
-* Selección del número óptimo de clusters (Elbow y Silhouette)
-* Identificación de perfiles de jugadores
-* Relación entre clusters y niveles de engagement
-
----
-
-## 📁 Estructura del Proyecto
-
-```
-gaming-engagement-ml/
-│
-├── data/
-│   └── online_gaming_behavior_insights.csv
-│
-├── notebooks/
-│   ├── 01_eda.ipynb
-│   ├── 02_clasificacion.ipynb
-│   ├── 03_importancia_variables.ipynb
-│   └── 04_clustering.ipynb
-│
-├── src/
-│   ├── preprocessing.py
-│   ├── train.py
-│   └── evaluate.py
-│
-└── README.md
-```
+1. Análisis exploratorio de datos (EDA)
+2. Preprocesado de datos:
+   - Codificación de variables categóricas
+   - Escalado de variables numéricas
+   - División train / test
+3. Entrenamiento y evaluación de modelos base
+4. Incorporación de variables derivadas (clusters y PCA)
+5. Comparación de métricas entre modelos y configuraciones
 
 ---
 
-## 📈 Resultados Principales (por completar)
+## Métricas de Evaluación
 
-* Mejor modelo: *Pendiente*
-* F1-score (macro): *Pendiente*
-* Variables más influyentes: *Pendiente*
+Las métricas utilizadas para la comparación de modelos son:
 
----
+- **F1-score (macro)** como métrica principal
+- **Accuracy** como métrica complementaria
+- **Matriz de confusión** para el análisis detallado de errores entre clases
 
-## 🚀 Posibles Mejoras Futuras
-
-* Optimización de hiperparámetros (GridSearch / Optuna)
-* Redes neuronales
-* Predicción temporal del engagement
-* Despliegue como API o dashboard interactivo
+Estas métricas permiten evaluar el rendimiento de forma equilibrada en un problema de clasificación multiclase.
 
 ---
 
-## 👤 Autor
+## Resultados
 
-**Omar Deknache Gil**
+El análisis permite evaluar de forma comparativa:
 
----
+- Qué modelo obtiene mejores métricas utilizando únicamente las variables originales
+- Cómo varía el rendimiento al añadir información agregada mediante clustering
+- El impacto de la reducción de dimensionalidad mediante PCA en la capacidad predictiva de los modelos
 
-## 📜 Licencia
-
-Proyecto con fines educativos y de investigación.
